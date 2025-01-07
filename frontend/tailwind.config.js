@@ -12,6 +12,10 @@ module.exports = {
       xl: '1440px',
     },
     extend: {
+      fontFamily : {
+        marcellus: ['Marcellus', 'Georgia', 'serif'],
+      },
+
       colors: {
         main: '#9D7B17',
         secondary: '#957528',
@@ -22,6 +26,9 @@ module.exports = {
       backgroundImage: {
         'bg-image': "url('@/assets/4.jpg')",
         'bg-main': "url('@/assets/black-bg.jpg')",
+        'bg-vector' : "url('@/assets/vector-bg.png')",
+        'bg-golden' : "url('@/assets/golden-gradient.jpg')",
+        'bg-test' : "url('@/assets/product_image.png')",
       },
     },
   },
