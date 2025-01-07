@@ -65,52 +65,69 @@
   
       <!-- About Section -->
       <section id="about" class="bg-white py-16">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-4xl font-bold text-main mb-6">About Follicle Sprout</h2>
-          <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
-            <img
-              src="@/assets/owner.jpg"
-              alt="About Follicle Sprout"
-              class="w-32 h-32 rounded-full md:w-1/2"
-            />
-            <p class="md:w-1/2 text-lg">
-              Follicle Sprout was founded by Indlovukazi Nombuyiselo. The Follicle Sprout Hairline Oil
-              is a perfect formula for stimulating the growth of hair follicles in preexisting areas. It
-              also serves as a beard oil, promoting smoother, healthier beard growth.
-            </p>
-          </div>
-        </div>
-      </section>
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold text-main mb-6">About Follicle Sprout</h2>
+    <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
+      <!-- Image -->
+      <img
+        src="@/assets/owner_2.jpg"
+        alt="About Follicle Sprout"
+        class="main-image lg:h-auto md:w-1/2"
+      />
+      <!-- Text -->
+      <p class="md:w-1/2 text-lg">
+        Follicle Sprout was founded by Indlovukazi Nombuyiselo. The Follicle Sprout Hairline Oil
+        is a perfect formula for stimulating the growth of hair follicles in preexisting areas. It
+        also serves as a beard oil, promoting smoother, healthier beard growth.
+      </p>
+    </div>
+  </div>
+</section>
+
   
       <!-- Testimonials Section -->
       <section id="testimonials" class="bg-gray-100 py-16">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-4xl font-bold text-main mb-6">What Our Customers Say</h2>
-          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div class="p-6 bg-white rounded-lg shadow">
-              <p>
-                "Follicle Sprout has been life-changing! My hair feels stronger and fuller than ever
-                before!"
-              </p>
-              <p class="mt-4 font-bold">- Customer A</p>
-            </div>
-            <div class="p-6 bg-white rounded-lg shadow">
-              <p>
-                "The beard oil is incredible! My beard has never been this smooth and free of ingrown
-                hair."
-              </p>
-              <p class="mt-4 font-bold">- Customer B</p>
-            </div>
-            <div class="p-6 bg-white rounded-lg shadow">
-              <p>
-                "After years of tension damage, my hairline is finally recovering, thanks to Follicle
-                Sprout!"
-              </p>
-              <p class="mt-4 font-bold">- Customer C</p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold text-main mb-6">What Our Customers Say</h2>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="p-6 bg-white rounded-lg shadow">
+        <img 
+        src="@/assets/customer_1.jpg"
+        class="images" 
+        alt="before and after for customer A" />
+        <p class="font-handwritten">
+          "Follicle Sprout has been life-changing! Not only does my hair feel stronger and fuller, but I’ve also regained confidence I thought I’d lost. This product truly delivers on its promises."
+        </p>
+        <p class="mt-4 font-bold">- Customer A</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow">
+        <img 
+        src="@/assets/customer_2.jpg"
+        class="images" 
+        alt="before and after for customer B" />
+        <p class="font-handwritten">
+          "As someone who started noticing hair thinning and a receding hairline in my late 20s, I felt like I was running out of options. I decided to give Follicle Sprout a try, and honestly, I wasn’t expecting miracles. But after just a few weeks of consistent use, I started seeing small, promising changes—my hairline appeared fuller, 
+          and my scalp felt healthier. Fast forward a few months, and 
+          I couldn’t believe it—my barber even commented on the difference! Follicle Sprout hasn’t just restored my hair; it’s brought back my confidence. 
+          It’s now a must-have in my grooming routine, and I’d recommend it to any man dealing with hair loss or thinning."
+        </p>
+        <p class="mt-4 font-bold">- Customer B</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow">
+        <img 
+        src="@/assets/customer_3.jpg"
+        class="images" 
+        alt="before and after for customer C" />
+        <p class="font-handwritten">
+          "After years of tension damage from tight hairstyles, my hairline was in bad shape. Thanks to Follicle Sprout, not only has my hairline started recovering, but my hair feels healthier and more nourished overall. I’m finally seeing progress I didn’t think was possible!"
+        </p>
+        <p class="mt-4 font-bold">- Customer C</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
   
       <!-- Shop Section -->
       <section id="shop" class="bg-white py-16">
@@ -169,7 +186,15 @@
   };
   </script>
   
-  <style>
-  /* Add your custom styles here if needed */
+<style>
+
+
+.main-image, .images {
+    width: 40rem;
+    height: 40rem;
+    border-radius: 30px;
+    margin-bottom: 15px;
+}
+
   </style>
   

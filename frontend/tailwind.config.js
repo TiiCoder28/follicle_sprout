@@ -14,6 +14,7 @@ module.exports = {
     extend: {
       fontFamily : {
         marcellus: ['Marcellus', 'Georgia', 'serif'],
+        handwritten: ['"Playwrite AU VIC Guides"', 'sans-serif'],
       },
 
       colors: {
