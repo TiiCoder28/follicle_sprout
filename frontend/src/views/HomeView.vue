@@ -1,34 +1,147 @@
+<script setup>
+import { ref } from "vue";
+
+const isMenuOpen = ref(false);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+const sendMessage = () => {
+  alert('Your message has been sent to Nombuyiselo.');
+};
+
+const copyPhoneNumber = () => {
+  navigator.clipboard.writeText('+27 63 127 8002').then(() => {
+    window.location.href = 'tel:+27 63 127 8002';
+  });
+};
+
+const redirectToEmail = () => {
+  window.location.href = 'nombuyiselotshoaedi0@gmail.com';
+};
+
+</script>
+
 <template>
     <section class="min-h-screen bg-bg-golden bg-cover bg-no-repeat bg-center relative font-marcellus">
       <!-- Navbar -->
       <nav class="relative container mx-auto p-6">
-        <div class="flex items-center justify-between">
-          <!-- Logo -->
-          <div class="flex pt-2">
-            <img
-              src="@/assets/follicle_no_bg.png"
-              class="rounded-full"
-              alt="follicle sprout logo"
-              width="50px"
-              height="50px"
-            />
-            <p class="text-main text-xl ml-2">Follicle Sprout</p>
-          </div>
-          <div class="hidden md:flex space-x-6">
-            <a href="#hero" class="hover:text-main">Home</a>
-            <a href="#about" class="hover:text-main">About</a>
-            <a href="#testimonials" class="hover:text-main">Testimonials</a>
-            <a href="#shop" class="hover:text-main">Shop</a>
-            <a href="#contact" class="hover:text-main">Contact Us</a>
-          </div>
-          <a
-            href="#"
-            class="hidden md:block p-3 px-6 pt-2 text-white bg-secondaryBg rounded-full baseline hover:bg-main"
-          >
-            <i class="pi pi-shopping-cart"> Cart</i>
-          </a>
-        </div>
-      </nav>
+  <div class="flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center pt-2">
+      <img
+        src="@/assets/follicle_no_bg.png"
+        class="rounded-full"
+        alt="follicle sprout logo"
+        width="50px"
+        height="50px"
+      />
+      <p class="text-main text-xl ml-2">Follicle Sprout</p>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex space-x-6">
+      <a href="#hero" class="hover:text-main">Home</a>
+      <a href="#about" class="hover:text-main">About</a>
+      <a href="#testimonials" class="hover:text-main">Testimonials</a>
+      <a href="#shop" class="hover:text-main">Shop</a>
+      <a href="#contact" class="hover:text-main">Contact Us</a>
+    </div>
+    <a
+      href="#"
+      class="hidden md:block p-3 px-6 pt-2 text-white bg-secondaryBg rounded-full baseline hover:bg-main"
+    >
+      <i class="pi pi-shopping-cart"> Cart</i>
+    </a>
+
+    <!-- Hamburger Icon -->
+    <button
+      id="menu-btn"
+      class="block md:hidden focus:outline-none"
+      @click="toggleMenu"
+    >
+      <i class="pi pi-bars text-2xl text-main"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Sidebar -->
+  <div
+    id="menu"
+    class="fixed top-0 left-0 w-2/3 h-full bg-bg-golden shadow-lg transform transition-transform duration-300"
+    :class="isMenuOpen ? 'translate-x-0' : '-translate-x-full'"
+  >
+    <div class="p-6 grid grid-cols-1 gap-4">
+      <!-- Close Button -->
+      <button
+        id="close-btn"
+        class="mb-6 text-main focus:outline-none"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-times text-2xl"></i>
+      </button>
+
+      <!-- Sidebar Links with Icons -->
+      <a
+        href="#hero"
+        class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-home mr-3"></i>
+        Home
+      </a>
+      <a
+        href="#about"
+        class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-info-circle mr-3"></i>
+        About
+      </a>
+      <a
+        href="#testimonials"
+        class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-comments mr-3"></i>
+        Testimonials
+      </a>
+      <a
+        href="#shop"
+        class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-shopping-bag mr-3"></i>
+        Shop
+      </a>
+      <a
+        href="#contact"
+        class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-envelope mr-3"></i>
+        Contact Us
+      </a>
+      <a
+        href="#cart"
+        class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-shopping-cart mr-3"></i>
+        Cart
+      </a>
+      <a
+        href="#signup"
+        class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
+        @click="toggleMenu"
+      >
+        <i class="pi pi-user-plus mr-3"></i>
+        Sign Up
+      </a>
+    </div>
+  </div>
+</nav>
+
+
   
       <!-- Hero section -->
       <section id="hero">
@@ -70,23 +183,36 @@
     <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
       <!-- Image -->
       <img
-        src="@/assets/owner_2.jpg"
+        src="@/assets/owner_3.jpg"
         alt="About Follicle Sprout"
-        class="main-image lg:h-auto md:w-1/2"
+        class="main-image rounded-lg shadow-lg lg:h-auto md:w-1/2 sm:h-150px sm:w-150px"
       />
       <!-- Text -->
-      <p class="md:w-1/2 text-lg">
-        Follicle Sprout was founded by Indlovukazi Nombuyiselo. The Follicle Sprout Hairline Oil
-        is a perfect formula for stimulating the growth of hair follicles in preexisting areas. It
-        also serves as a beard oil, promoting smoother, healthier beard growth.
-      </p>
+      <div class="md:w-1/2 text-lg text-left">
+        <p class="mb-4">
+          Follicle Sprout was founded by <span class="font-bold">Indlovukazi Nombuyiselo</span>, 
+          a visionary entrepreneur who transformed her personal struggles with hair loss into an innovative solution for others. 
+          Growing up in South Africa, Nombuyiselo witnessed the damage caused by chemical treatments, tension styling, and harsh environmental conditions.
+        </p>
+        <p class="mb-4">
+          Determined to make a change, she combined traditional African herbal remedies with modern scientific research to create 
+          <span class="font-bold">Follicle Sprout Hairline Oil</span>. This perfect formula not only stimulates the growth of hair follicles in preexisting areas but also serves as a beard oil, 
+          promoting smoother, healthier beard growth.
+        </p>
+        <p>
+          Today, Follicle Sprout stands as a symbol of resilience and empowerment, helping individuals restore their hair 
+          and regain their confidence. Whether you're looking to repair your hairline, grow a fuller beard, or simply embrace your natural beauty, 
+          Follicle Sprout is here to support you every step of the way.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
+
   
       <!-- Testimonials Section -->
-      <section id="testimonials" class="bg-gray-100 py-16">
+      <section id="testimonials" class="bg-bg-golden bg-cover bg-no-repeat relative py-16">
   <div class="container mx-auto px-6 text-center">
     <h2 class="text-4xl font-bold text-main mb-6">What Our Customers Say</h2>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -132,7 +258,7 @@
       <!-- Shop Section -->
       <section id="shop" class="bg-white py-16">
         <div class="container mx-auto px-6 text-center">
-          <h2 class="text-4xl font-bold text-main mb-6">Shop Our Products</h2>
+          <h2 class="text-4xl font-bold text-main mb-6">Shop Our Product</h2>
           <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
             <img
               src="@/assets/product_image_nobg.png"
@@ -155,21 +281,69 @@
         </div>
       </section>
   
-      <!-- Contact Us Section -->
-      <section id="contact" class="bg-gray-100 py-16">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-4xl font-bold text-main mb-6">Contact Us</h2>
-          <p class="text-lg">Have questions? Get in touch with us!</p>
-          <div class="mt-6">
-            <p class="mb-2">
-              <strong>Email:</strong> folliclesprout@example.com
-            </p>
-            <p>
-              <strong>Call:</strong> +27 123 456 7890
-            </p>
-          </div>
+      <section id="contact-us" class="bg-bg-golden bg-cover bg-no-repeat bg-blend-normal py-16 text-center">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-main mb-8 text-center">Contact Us</h2>
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Contact Details -->
+      <div class="flex-1 p-6 bg-bg-gray rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold text-main mb-4">Reach Out</h3>
+        <div class="flex items-center mb-4">
+          <button
+            class="flex items-center text-main hover:text-secondaryBg focus:outline-none"
+            @click="copyPhoneNumber"
+          >
+            <i class="pi pi-phone text-xl mr-3"></i>
+            <span>+27 63 127 8002</span>
+          </button>
         </div>
-      </section>
+        <div class="flex items-center">
+          <button
+            class="flex items-center text-main hover:text-secondaryBg focus:outline-none"
+            @click="redirectToEmail"
+          >
+            <i class="pi pi-envelope text-xl mr-3"></i>
+            <span>nombuyiselotshoaedi0@gmail.com</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Leave a Message -->
+      <div class="flex-1 p-6 bg-bg-gray rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold text-main mb-4">Leave Us a Message</h3>
+        <form @submit.prevent="sendMessage">
+          <div class="mb-4">
+            <label for="name" class="block text-main mb-2">Your Name</label>
+            <input
+              id="name"
+              type="text"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-main"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="message" class="block text-main mb-2">Your Message</label>
+            <textarea
+              id="message"
+              rows="4"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-main"
+              placeholder="Enter your message"
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full p-3 text-white bg-secondaryBg rounded-lg hover:bg-main"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
   
       <!-- Footer -->
       <footer class="bg-secondaryBg py-6">
@@ -179,22 +353,21 @@
       </footer>
     </section>
   </template>
-  
-  <script>
-  export default {
-    name: "LandingPage",
-  };
-  </script>
+
   
 <style>
 
+.main-image {
+    border-radius: 150px;
+    width: 50%;
+    height: auto;
+}
 
-.main-image, .images {
+.images {
+    border-radius: 30px;
     width: 40rem;
     height: 40rem;
-    border-radius: 30px;
-    margin-bottom: 15px;
+    
 }
 
   </style>
-  
