@@ -22,7 +22,7 @@ const redirectToEmail = () => {
 
 </script>
 
-<template>
+<template class="scroll-smooth">
     <section class="min-h-screen bg-bg-golden bg-cover bg-no-repeat bg-center relative font-marcellus">
       <!-- Navbar -->
       <nav class="relative container mx-auto p-6">
@@ -48,7 +48,7 @@ const redirectToEmail = () => {
       <a href="#contact" class="hover:text-main">Contact Us</a>
     </div>
     <a
-      href="#"
+      href="/signup"
       class="hidden md:block p-3 px-6 pt-2 text-white bg-secondaryBg rounded-full baseline hover:bg-main"
     >
       <i class="pi pi-shopping-cart"> Cart</i>
@@ -114,7 +114,7 @@ const redirectToEmail = () => {
         Shop
       </a>
       <a
-        href="#contact"
+        href="#contact-us"
         class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
         @click="toggleMenu"
       >
@@ -122,7 +122,7 @@ const redirectToEmail = () => {
         Contact Us
       </a>
       <a
-        href="#cart"
+        href="/login"
         class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
         @click="toggleMenu"
       >
@@ -130,7 +130,7 @@ const redirectToEmail = () => {
         Cart
       </a>
       <a
-        href="#signup"
+        href="/signup"
         class="flex items-center p-4 text-lg text-main bg-white rounded-lg shadow-md hover:bg-secondaryBg hover:text-white"
         @click="toggleMenu"
       >
