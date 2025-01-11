@@ -16,6 +16,7 @@ module.exports = {
         marcellus: ['Marcellus', 'Georgia', 'serif'],
         handwritten: ['"Playwrite AU VIC Guides"', 'sans-serif'],
         cursive: ['Cedarville Cursive', 'san-serif'],
+        handwritting: ['Playwrite AU SA', 'san-serif']
       },
 
       colors: {
@@ -31,6 +32,10 @@ module.exports = {
         'bg-vector' : "url('@/assets/vector-bg.png')",
         'bg-golden' : "url('@/assets/golden-gradient.jpg')",
         'bg-test' : "url('@/assets/product_image.png')",
+        'bg-golden_2': "url('@/assets/Golden_silloutte.png')",
+        'bg-woman': "url('@/assets/Golden_woman.png')",
+        'bg-man': "url('@/assets/Golden_man.png')",
+
       },
     },
   },
