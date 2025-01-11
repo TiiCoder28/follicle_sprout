@@ -33,8 +33,9 @@ module.exports = {
         'bg-golden' : "url('@/assets/golden-gradient.jpg')",
         'bg-test' : "url('@/assets/product_image.png')",
         'bg-golden_2': "url('@/assets/Golden_silloutte.png')",
-        'bg-woman': "url('@/assets/Golden_woman.png')",
-        'bg-man': "url('@/assets/Golden_man.png')",
+        'bg-sparkles': "url('@/assets/golden_sparkles_bg.png')",
+        'bg-subtle' : "url('@/assets/subtle_bg.png')",
+
 
       },
     },
