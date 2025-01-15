@@ -4,7 +4,10 @@ const morgan = require('morgan');
 const helmet = require('helmet')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
+const authRouter = require('./routers/authRouter')
+
 
 const app = express();
 
@@ -15,10 +18,12 @@ require('dotenv/config');
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.use(morgan('tiny'));
 app.use(cookieParser())
+app.use(bodyParser.json())
 app.use(helmet())
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+app.use('/api/auth', authRouter)
 
 
 

@@ -61,11 +61,10 @@ const userSchema = mongoose.Schema({
         type: String,
         default: null                                  // For Google login integration
     },
-    deliveryAddresses: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'DeliveryAddress',
-        required: [true, 'The delivery address is required']
-    },
+    // profile: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Profile' // Reference to the Profile schema
+    // },
     createdAt: {
         type: Date,
         default: Date.now

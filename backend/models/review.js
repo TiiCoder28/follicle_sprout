@@ -11,6 +11,14 @@ const reviewSchema = mongoose.Schema({
         ref: 'Product',
         required: [true, 'Product is required']
     },
+    isVerifiedPurchase: {
+        type: Boolean,
+        default: false
+    },
+    helpfulVotes: {
+        type: Number,
+        default: 0
+    },
     rating: {
         type: Number,
         required: true,

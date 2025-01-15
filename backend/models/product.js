@@ -21,15 +21,29 @@ const productSchema = mongoose.Schema({
         required: [true, 'Product image URL is required'],
         trim: true
     },
-    category: {
+    usageInstructions: {
         type: String,
-        required: [true, 'Category is required'],
+        default: '',
         trim: true
     },
-    brand: {
-        type: String,
-        default: 'Follicle Sprout',
-        trim: true
+    tutorials: [
+        {
+            videoUrl: { type: String, trim: true }, 
+            thumbnail: { type: String, trim: true }, 
+            title: { type: String, trim: true }, 
+            description: { type: String, trim: true } 
+        }
+    ],
+    additionalImages: [
+        {
+            url: { type: String, trim: true }, 
+            altText: { type: String, trim: true } 
+        }
+    ],
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category', 
+        required: true
     },
     stock: {
         type: Number,
@@ -88,7 +102,7 @@ const productSchema = mongoose.Schema({
         default: Date.now
     }
 }, {
-    timestamps: true // Automatically adds `createdAt` and `updatedAt`
+    timestamps: true
 });
 
 module.exports = mongoose.model('Product', productSchema);
