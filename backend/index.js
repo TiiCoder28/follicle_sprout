@@ -1,55 +1,37 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const helmet = require('helmet')
+const cors = require('cors')
+const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose');
 
 const app = express();
 
 require('dotenv/config');
 
-// Create an API URL
-const api = process.env.API_URL;
-
-//Tester API
-app.get(`${api}/products`, (req, res) => {
-    console.log('GET request received at /api/products');
-    const product = {
-        id: 1,
-        name: "Follicle Sprout",
-        image: 'follicle sprout image url',
-    };
-    res.send(product);
-});
-
-app.post(`${api}/products`, (req, res) => {
-    console.log('POST request received at /api/products');
-    console.log('Request body:', req.body);
-    const product = {
-        id: 1,
-        name: "Follicle Sprout",
-        image: 'follicle sprout image url',
-    };
-    res.send(product);
-});
-
 
 // Middleware
-// 1. Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-// 2. Body-parser
+app.use(morgan('tiny'));
+app.use(cookieParser())
+app.use(helmet())
+app.use(cors())
+app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 
-// 3. Morgan - Logs requests
-app.use(morgan('tiny'));
 
-// Test
+
 app.use((req, res, next) => {
     console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
     next();
 });
 
+
+app.get('/', (req, res) => {
+    console.log('API is working')
+    res.json({message : 'Hello from the server'})
+})
 
 // Catch-all route to serve index.html for SPA routes
 app.get('*', (req, res) => {
@@ -57,16 +39,15 @@ app.get('*', (req, res) => {
 });
 
 
-//database connection - connecting to mangodb
+
 mongoose.connect(process.env.CONNECTION_STRING, {
-    dbName: "follicle_sprout-database"
-})
-.then(() => {
-    console.log('Database connection is ready...')
+    dbName: 'follicle_sprout-database'
+}).then(() => {
+    console.log('connection established')
 })
 .catch((err) => {
-    console.log('no connection established')
-}) 
+    console.log(err, ' no connection found')
+})
 
 // Start the server
 const PORT = process.env.PORT;
