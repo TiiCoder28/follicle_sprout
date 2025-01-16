@@ -6,13 +6,15 @@ const userSchema = mongoose.Schema({
         required: [true, 'Username is required'],
         trim: true,                                     // Removes whitespace
         unique: [true, 'Username must be unique'],
-        minLength: [3, 'Username must have at least 3 characters']
+        minLength: [3, 'Username must have at least 3 characters'],
+        maxLength: 50
     },
     email: {
         type: String,
         required: [true, 'Email is required'],
         trim: true,
         unique: [true, 'Email must be unique'],
+        index: true,
         minLength: [5, 'Email must have 5 characters'],
         lowercase: true,
         match: [/\S+@\S+\.\S+/, 'Email is not valid']
@@ -22,11 +24,12 @@ const userSchema = mongoose.Schema({
         required: [true, 'Password is required'],
         trim: true,
         select: false,                                  // Prevent password from being returned in queries
-        minLength: [6, 'Password must have at least 6 characters']
+        minLength: [6, 'Password must have at least 6 characters'],
+        maxLength: 100
     },
     role: {
         type: String,
-        enum: ['customer', 'admin'],                   // Role can be either 'customer' or 'admin'
+        enum: ['customer', 'admin'],
         default: 'customer'
     },
     verified: {
@@ -65,14 +68,6 @@ const userSchema = mongoose.Schema({
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'Profile' // Reference to the Profile schema
     // },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
 }, {
     timestamps: true                                   // Automatically manages `createdAt` and `updatedAt`
 });

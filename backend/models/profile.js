@@ -8,25 +8,17 @@ const profileSchema = mongoose.Schema({
     },
     fullName: {
         type: String,
-        required: [true, 'Full name is required']
+        required: false 
     },
     phoneNumber: {
         type: String,
-        required: [true, 'Phone number is required'],
+        required: false,
         match: [/^\+27\d{9}$/, 'Please enter a valid South African phone number (e.g., +27xxxxxxxxx).'] // Optional South African number validation
     },
     deliveryAddresses: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'DeliveryAddress' // Reference to the DeliveryAddress schema
+        ref: 'DeliveryAddress'
     }],
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Profile', profileSchema);

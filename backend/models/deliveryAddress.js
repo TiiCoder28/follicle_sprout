@@ -28,14 +28,6 @@ const deliveryAddressSchema = mongoose.Schema({
         type: String, 
         required: [true, 'Phone number is required'] 
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
 }, {
     timestamps: true
 });

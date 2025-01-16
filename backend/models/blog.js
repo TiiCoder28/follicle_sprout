@@ -27,14 +27,6 @@ const blogSchema = mongoose.Schema({
             ref: 'Product'
         }
     ],
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
 }, {
     timestamps: true
 });

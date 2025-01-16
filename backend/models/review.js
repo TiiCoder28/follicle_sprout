@@ -33,14 +33,6 @@ const reviewSchema = mongoose.Schema({
         maxLength: [500, 'Review text cannot be more than 500 characters']
 
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
 }, {
     timestamps: true 
 });

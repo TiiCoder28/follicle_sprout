@@ -28,15 +28,6 @@ const paymentSchema = mongoose.Schema({
         type: Date,
         default: Date.now 
     },
-
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
 }, {
     timestamps: true
 });

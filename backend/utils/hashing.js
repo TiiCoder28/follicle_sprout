@@ -1,16 +1,17 @@
-const bcrypt = require('bcryptjs')
+const { hash, compare } = require('bcryptjs');
+const { createHmac } = require('crypto')
 
-exports.doHash = async (value, saltRounds = 10) => {
-    try {
+exports.doHash = (value, saltValue) => {
+    const result = hash(value, saltValue);
+    return result;
+}
 
-         // Generate a salt with the specified number of rounds
-        const salt = await bcrypt.genSalt(saltRounds);
+exports.doHashValidation = (value, hashedValue) => {
+    const result  = compare(value, hashedValue);
+    return result;
+}
 
-        //hash the password using the salt
-        const hashedValue = await bcrypt.hash(value, salt)
-        return hashedValue
-
-    } catch(error){
-        throw new Error('Error hashing value: ' + error.message);
-    }
+exports.hmacProcess = (value, key) => {
+    const result = createHmac('sha256', key).update(value).digest('hex');
+    return result;
 }
