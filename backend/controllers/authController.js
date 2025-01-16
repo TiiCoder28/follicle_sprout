@@ -124,16 +124,9 @@ exports.sendVerificationCode = async (req, res) => {
             html: `<h1>${codeValue}</h1>`
         });
 
-        console.log('Email Info:', info);  // Log email info to verify email was sent
-
         if (info.accepted && info.accepted.includes(existingUser.email)) {
-            // Hash the code before saving
-            console.log('Verification code sent: ', codeValue);  // Log the hashed code
-
             existingUser.verificationCode = codeValue;
             existingUser.verificationCodeValidation = Date.now();
-            console.log('User before save:', existingUser);  // Log user data before saving
-            console.log('User verification code: ', existingUser.verificationCode)
             await existingUser.save();
 
             return res.status(200).json({ success: true, message: 'Code has been sent successfully' });
@@ -175,18 +168,11 @@ exports.verifyVerificationCode = async (req, res) => {
         // Check if the verification code has expired
         const expirationTime = 5 * 60 * 1000; // 5 minutes in milliseconds
         const timeDifference = Date.now() - existingUser.verificationCodeValidation;
-        console.log('Verification Code Validation Time:', existingUser.verificationCodeValidation);
-        console.log('Current Time:', Date.now());
-        console.log('Time Difference:', timeDifference);
+     
 
         if (timeDifference > expirationTime) {
             return res.status(400).json({ success: false, message: 'The verification code has expired' });
         }
-
-        // Compare the provided code with the stored code
-        console.log('Provided Code:', providedCode); // Log the provided code
-        console.log('Stored Verification Code:', existingUser.verificationCode); // Log the stored code
-        console.log('user verification code: ', existingUser.verificationCode)
 
         if (providedCode.toString() === existingUser.verificationCode.toString()) {
             // Mark the user as verified and clear the verification code and timestamp

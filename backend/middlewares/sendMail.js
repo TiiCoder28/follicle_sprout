@@ -21,8 +21,8 @@ const transport = nodeMailer.createTransport({
         user:process.env.NODE_CODE_SENDING_EMAIL_ADDRESS,
         pass: process.env.NODE_CODE_SENDING_EMAIL_PASSWORD
     },
-    logger: true, // Log SMTP transactions
-    debug: true   // Include detailed debug info
+    logger: false, // Log SMTP transactions
+    debug: false   // Include detailed debug info
 });
 
 
