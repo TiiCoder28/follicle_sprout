@@ -67,3 +67,14 @@ exports.acceptCodeSchema = Joi.object({
     providedCode: Joi.number()
     .required()
 })
+
+
+exports.changePasswordSchema = Joi.object({
+    oldPassword: Joi.string().required(),
+    newPassword: Joi.string()
+        .required()
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/)
+        .messages({
+            "string.pattern.base": "Password must include at least one letter, one number, and be at least 6 characters long."
+        }),
+});
