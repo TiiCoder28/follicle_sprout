@@ -65,7 +65,7 @@ exports.acceptCodeSchema = Joi.object({
             tlds: { allow: ['com', 'net'] }
         }),
     providedCode: Joi.number()
-    .required()
+        .required()
 })
 
 
@@ -78,3 +78,22 @@ exports.changePasswordSchema = Joi.object({
             "string.pattern.base": "Password must include at least one letter, one number, and be at least 6 characters long."
         }),
 });
+
+
+exports.acceptFPCodeSchema = Joi.object({
+    email: Joi.string()
+        .min(5)
+        .max(60)
+        .required()
+        .email({
+            tlds: { allow: ['com', 'net'] }
+        }),
+    providedCode: Joi.number()
+        .required(),
+    newPassword: Joi.string()
+        .required()
+        .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/)
+        .messages({
+            "string.pattern.base": "Password must include at least one letter, one number, and be at least 6 characters long."
+        }),
+})

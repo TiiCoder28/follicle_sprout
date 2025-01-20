@@ -48,7 +48,7 @@ const userSchema = mongoose.Schema({
         type: String,
         select: false                                  // Code sent for password recovery
     },
-    forgotPasswordCodeExpiration: {
+    forgotPasswordCodeValidation: {
         type: Date,                                    // Expiry time for the forgot password code
         select: false
     },

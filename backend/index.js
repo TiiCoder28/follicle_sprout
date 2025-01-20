@@ -6,7 +6,10 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
-const authRouter = require('./routers/authRouter')
+const authRouter = require('./routers/authRouter');
+const postRouter = require('./routers/postsRouter');
+const session = require('express-session');
+const passport = require('./passport-config');
 
 
 const app = express();
@@ -23,9 +26,16 @@ app.use(helmet())
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
-app.use('/api/auth', authRouter)
-
-
+app.use('/api/auth', authRouter);
+app.use('/api/post', postRouter);
+app.use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use((req, res, next) => {
     console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
