@@ -10,7 +10,6 @@ Make sure you have the following installed:
 4. MongoDB (for backend database, if not using cloud services): Download MongoDB
 5. Backend Setup (Node.js)
 6. Clone the Repository: Clone the repository to your local machine:
-
 1. 
 git clone https://github.com/your-repo/follicle_sprout.git
 cd follicle_sprout
