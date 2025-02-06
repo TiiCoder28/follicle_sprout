@@ -23,7 +23,10 @@ app.use(morgan('tiny'));
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(helmet())
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:8080',
+    credentials: true
+}))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use('/api/auth', authRouter);

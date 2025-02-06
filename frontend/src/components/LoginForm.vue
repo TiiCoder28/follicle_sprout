@@ -84,17 +84,14 @@
           <!-- Social Login Links -->
           <h6 class="text-gray-500 text-center mb-4">Login using</h6>
           <div class="flex justify-center items-center space-x-4">
-            <a href="#" class="text-main text-2xl hover:text-white hover:scale-110 transition">
+            <a href="http://localhost:8000/auth/google" class="text-main text-2xl hover:text-white hover:scale-110 transition">
               <i class="pi pi-google"></i>
             </a>
-            <a href="#" class="text-main text-2xl hover:text-white hover:scale-110 transition">
+            <a href="http://localhost:8000/auth/facebook" class="text-main text-2xl hover:text-white hover:scale-110 transition">
               <i class="pi pi-facebook"></i>
             </a>
             <a href="#" class="text-main text-2xl hover:text-white hover:scale-110 transition">
               <i class="pi pi-instagram"></i>
-            </a>
-            <a href="#" class="text-main text-2xl hover:text-white hover:scale-110 transition">
-              <i class="pi pi-envelope"></i>
             </a>
           </div>
         </div>

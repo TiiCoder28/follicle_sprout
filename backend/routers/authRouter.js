@@ -25,9 +25,21 @@ router.get(
     '/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     (req, res) => {
-        // Successful authentication, redirect as needed
-        res.redirect('/dashboard');
+        
+        res.redirect('/customer-dashboard');
     }
+);
+
+
+//facebook oauth
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  (req, res) => {
+   
+    res.redirect('/customer-dashboard');
+  }
 );
 
 module.exports = router;

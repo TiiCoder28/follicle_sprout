@@ -361,3 +361,27 @@ exports.verifyForgotPasswordCode = async (req, res) => {
         return res.status(500).json({ success: false, message: 'An error occurred while verifying the code' });
     }
 };
+
+exports.googleAuth = async (req, res) => {
+    const existingUser = await user.findOne({googleId: req.user.id})
+
+    try{
+        if(!existingUser) {
+         user = new user({
+            googleId: req.user.id,
+                email: req.user.email,
+                username: req.user.displayName || req.user.email.split('@')[0], // Or any other method to set the username
+                role: 'customer', // Default role
+                verified: true, // Assuming the user is verified via Google
+         })
+
+         await existingUser.save();
+
+        }
+    }
+        catch(error) {
+            console.log("Error creating account using Google")
+            return res.status(500).json({ success: false, message: 'An error occurred while verifying the code' });
+
+        }
+}
